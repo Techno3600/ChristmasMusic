@@ -36,8 +36,7 @@ public class EvenimenteJucator implements Listener
     public void onJoin(final PlayerJoinEvent e) {
         final Player p = e.getPlayer();
         final int r = new Random().nextInt(6);
-        System.out.println(r);
-        final Song s = NBSDecoder.parse(new File(Menu.instance.getDataFolder(), "Muzica/" + Menu.music.get(r) + ".nbs"));
+        final Song s = NBSDecoder.parse(new File(Menu.instance.getDataFolder(), "Muzica/" + r + ".nbs"));
         final SongPlayer sp = new RadioSongPlayer(s);
         sp.setAutoDestroy(true);
         sp.addPlayer(p);
