@@ -1,0 +1,14 @@
+name: ChristmasMusic
+version: 1.0
+description: Christmas Music
+authors: [Wiz_Techno, JinGamerZ]
+
+main: ro.Fr33styler.ChristmasMusic.Menu
+api-version: 1.16
+
+commands:
+  stopmusic:
+    description: Stop the music of a player
+    permission: op
+    aliases:
+      - stopm
