@@ -55,10 +55,8 @@ public class EvenimenteJucator implements Listener
         catch (Exception ex) {}
     }
     
-    @EventHandler
-    public void onSongEnd(final SongEndEvent e) {
-        final SongPlayer SP = e.getSongPlayer();
-        for (final String S : SP.getPlayerList()) {
+    public static void endSong(SongPlayer songPlayer) {
+        for (final String S : songPlayer.getPlayerList()) {
             final Player p = Bukkit.getPlayer(S);
             if (p == null) {
                 return;
@@ -66,7 +64,7 @@ public class EvenimenteJucator implements Listener
             new BukkitRunnable() {
                 public void run() {
                     final int r = (int)(Math.random() * Menu.music.size());
-                    final Song s = NBSDecoder.parse(new File(Menu.instance.getDataFolder(), "Muzica/" + Menu.music.get(r) + ".nbs"));
+                    final Song s = NBSDecoder.parse(new File(Menu.instance.getDataFolder(), "Muzica/" + new Random().nextInt(6) + ".nbs"));
                     final SongPlayer sp = new RadioSongPlayer(s);
                     sp.setAutoDestroy(true);
                     sp.addPlayer(p);

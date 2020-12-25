@@ -11,6 +11,8 @@ import org.bukkit.entity.Player;
 import java.util.Iterator;
 import org.bukkit.event.Event;
 import org.bukkit.Bukkit;
+import ro.Fr33styler.ChristmasMusic.EvenimenteJucator;
+
 import java.util.HashMap;
 import java.util.ArrayList;
 
@@ -51,8 +53,7 @@ public abstract class SongPlayer
                             if (SongPlayer.this.tick > SongPlayer.this.song.getLength()) {
                                 SongPlayer.this.playing = false;
                                 SongPlayer.this.tick = -1;
-                                final SongEndEvent event = new SongEndEvent(SongPlayer.this);
-                                Bukkit.getPluginManager().callEvent((Event)event);
+                                EvenimenteJucator.endSong(SongPlayer.this);
                                 if (SongPlayer.this.autoDestroy) {
                                     SongPlayer.this.destroy();
                                     // monitorexit(this.this$0)
@@ -86,7 +87,8 @@ public abstract class SongPlayer
     public List<String> getPlayerList() {
         return Collections.unmodifiableList((List<? extends String>)this.playerList);
     }
-    
+
+
     public void addPlayer(final Player p) {
         synchronized (this) {
             if (!this.playerList.contains(p.getName())) {
